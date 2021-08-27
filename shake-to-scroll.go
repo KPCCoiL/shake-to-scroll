@@ -76,6 +76,12 @@ func main() {
 		log.Fatal("Unable to create box:", err)
 	}
 	scroll.Add(box)
+	const margin = 10
+	box.SetMarginTop(margin)
+	box.SetMarginStart(margin)
+	box.SetMarginEnd(margin)
+	// intentional
+	box.SetMarginBottom(0)
 
 	textView, err := gtk.TextViewNew()
 	if err != nil {
@@ -106,7 +112,7 @@ func main() {
 	if err != nil {
 		log.Fatal("Unable to create button: ", err)
 	}
-	confirmation.Add(button)
+	confirmation.PackEnd(button, false, false, 0)
 	button.SetLabel("Continue")
 	button.SetSensitive(false)
 
