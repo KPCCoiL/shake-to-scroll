@@ -8,6 +8,7 @@ import (
 
 	"github.com/gotk3/gotk3/glib"
 	"github.com/gotk3/gotk3/gtk"
+	"github.com/gotk3/gotk3/gdk"
 )
 
 type Vector struct {
@@ -63,6 +64,7 @@ func main() {
 	win.Connect("destroy", func() {
 		gtk.MainQuit()
 	})
+	win.SetEvents(int(gdk.FOCUS_CHANGE_MASK))
 
 	scroll, err := gtk.ScrolledWindowNew(nil, nil)
 	if err != nil {
@@ -90,6 +92,21 @@ func main() {
 	box.Add(textView)
 	textView.SetWrapMode(gtk.WRAP_WORD)
 	textView.SetEditable(false)
+	textView.Connect("focus_in_event", func() {
+		win.SetFocus(nil)
+		dialog := gtk.MessageDialogNew(
+			win,
+			gtk.DIALOG_MODAL,
+			gtk.MESSAGE_INFO,
+			gtk.BUTTONS_OK,
+			"Shake the window to scroll down. If you agree to the Terms, check the checkbox and press Continue.",
+		)
+		dialog.SetTitle("Instruction")
+		dialog.Connect("response", func() {
+			dialog.Close()
+		})
+		dialog.ShowAll()
+	})
 
 	buffer, err := textView.GetBuffer()
 	if err != nil {
