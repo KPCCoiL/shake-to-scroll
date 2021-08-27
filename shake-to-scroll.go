@@ -138,7 +138,6 @@ func main() {
 		)
 		drag_speed := math.Hypot(v.x, v.y)
 		acceleration = lambda*drag_speed - spring_constant*ratio
-		log.Println(ratio, speed, acceleration, drag_speed)
 
 		return true
 	})
