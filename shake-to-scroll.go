@@ -73,7 +73,7 @@ func main() {
 	win.Add(scroll)
 	scroll.SetPolicy(gtk.POLICY_NEVER, gtk.POLICY_EXTERNAL)
 
-	box, err := gtk.BoxNew(gtk.ORIENTATION_VERTICAL, 10)
+	box, err := gtk.BoxNew(gtk.ORIENTATION_VERTICAL, 0)
 	if err != nil {
 		log.Fatal("Unable to create box:", err)
 	}
