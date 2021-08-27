@@ -166,7 +166,7 @@ func main() {
 
 		const (
 			lambda          = 5e-4
-			spring_constant = 2
+			spring_constant = 1.2
 		)
 		drag_speed := math.Hypot(v.x, v.y)
 		acceleration = lambda*drag_speed - spring_constant*ratio
