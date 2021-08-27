@@ -123,12 +123,14 @@ func main() {
 	if err != nil {
 		log.Fatal("Unable to create check button: ", err)
 	}
+	checkButton.SetCanFocus(false)
 	confirmation.Add(checkButton)
 
 	button, err := gtk.ButtonNew()
 	if err != nil {
 		log.Fatal("Unable to create button: ", err)
 	}
+	button.SetCanFocus(false)
 	confirmation.PackEnd(button, false, false, 0)
 	button.SetLabel("Continue")
 	button.SetSensitive(false)
