@@ -2,7 +2,7 @@
 
 * What's this?
 A fake terms of use window that you need to shake it to scroll down.
-Made for [[https:reddit.com/r/badUIbattles]].
+Made for [[https://reddit.com/r/badUIbattles]].
 
 * Installation
 #+begin_src bash
