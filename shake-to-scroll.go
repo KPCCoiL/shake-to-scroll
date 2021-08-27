@@ -1,7 +1,7 @@
 package main
 
 import (
-	"io/ioutil"
+	_ "embed"
 	"log"
 	"math"
 	"time"
@@ -37,14 +37,11 @@ func velocity(win *gtk.Window, prev PastPosition) Vector {
 	return Vector{x: dx / dt, y: dy / dt}
 }
 
-func addSampleText(buf *gtk.TextBuffer) {
-	// generated thanks to https://lipsum.com/
-	content, err := ioutil.ReadFile("lorem-ipsum.txt")
-	if err != nil {
-		log.Fatal("Could not read terms of use: ", err)
-	}
+//go:embed lorem-ipsum.txt
+var loremIpsum string
 
-	buf.SetText("Terms of Use\n\n" + string(content))
+func addSampleText(buf *gtk.TextBuffer) {
+	buf.SetText("Terms of Use\n\n" + string(loremIpsum))
 	tag := buf.CreateTag("headline", map[string]interface{}{
 		"size-points": 24.0,
 	})
