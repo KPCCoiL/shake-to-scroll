@@ -114,7 +114,17 @@ func main() {
 		button.SetSensitive(checkButton.GetActive())
 	})
 	button.Connect("clicked", func() {
-		button.SetLabel("Yay!")
+		dialog := gtk.MessageDialogNew(
+			win,
+			gtk.DIALOG_MODAL,
+			gtk.MESSAGE_INFO,
+			gtk.BUTTONS_OK,
+			"Now you can use our application!")
+		dialog.SetTitle("Terms agreed")
+		dialog.Connect("response", func() {
+			dialog.Close()
+		})
+		dialog.ShowAll()
 	})
 
 	first_time := true
