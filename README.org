@@ -1,0 +1,13 @@
+#+title: Shake to Scroll
+
+* What's this?
+A fake terms of use window that you need to shake it to scroll down.
+Made for [[https:reddit.com/r/badUIbattles]].
+
+* Installation
+#+begin_src bash
+  go get github.com/KPCCoiL/shake-to-scroll
+#+end_src
+
+* Caveat
+Parameters (e.g. how fast you need to shake the window) are tuned for my MacBook. It may not be annoying enough on your machine or platform.
